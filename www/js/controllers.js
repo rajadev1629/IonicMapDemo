@@ -18,11 +18,10 @@ angular.module('starter.controllers', [])
 
     navigator.geolocation.getCurrentPosition(function (pos) {
       console.log('Got pos', pos);
-      $scope.map.setCenter(new google.maps.LatLng(28.603152, 77.363768));
+      $scope.map.setCenter(new google.maps.LatLng(pos.coords.lattitude, pos.coords.longitude));
       $scope.loading.hide();
     }, function (error) {
-      $scope.map.setCenter(new google.maps.LatLng(28.603152, 77.363768));
-      $scope.loading.hide();
+      alert('Unable to fetch location'+error.message);
     });
   };
 });
